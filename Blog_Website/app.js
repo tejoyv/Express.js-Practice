@@ -33,7 +33,8 @@ app.get("/compose",function(req,res){
 
 app.post("/compose",function(req,res){
 	var title = req.body.postTitle;
-	console.log(title);
+	var body = req.body.postBody;
+	console.log(title,body);
 })
 
 app.listen(3000, function() {
