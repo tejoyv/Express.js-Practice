@@ -36,8 +36,16 @@ app.post("/",function(req,res){
 	// https used for getting data from external resource (one used in API demo)
 	//https.request used for post data to external resource here mailchimp server
 
+	// usX -> us17 from API Key 
+	const url = "https://us17.api.mailchimp.com/3.0/lists/"+process.env.List_ID;
+
+	const options = {
+		method:"POST",
+		auth: "tejoy:"+process.env.API_KEY    //Tejoy written anything can be written there
+	}
+
 	https.request(url,options,function(response){
-		
+
 	})
 
 })
