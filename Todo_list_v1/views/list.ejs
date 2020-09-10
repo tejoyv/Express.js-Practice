@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 	<head>
 		<title>To-do app</title>
+		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body>
-		<h1 style="color:blue;"><%= todayIsDay %></h1>
+		<div class="box" id="heading">
+			<h1><%= todayIsDay %></h1>
+		</div>
 
-		<ul>
+		<div class="box">
 			<% for(var i=0;i<newItem.length;i++){ %>
-				<li><%= newItem[i] %></li>
+				<div class="item">
+					<input type="checkbox">
+					<p><%= newItem[i] %></p>
+				</div>
 			<% } %>
-		</ul>
-
-		<form action="/" method="POST">
-			<input type="text" name="taskName">
-			<button type="submit">Add</button>
-		</form>
+			<form action="/" method="POST">
+				<input type="text" name="taskName">
+				<button type="submit">+</button>
+			</form>
+		</div>
 	</body>
 </html>
