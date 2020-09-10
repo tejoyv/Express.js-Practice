@@ -20,6 +20,11 @@ app.get("/",function(req,res){
 	res.render("list",{todayIsDay:day});
 })
 
+app.post("/",function(req,res){
+	var task = req.body.taskName;
+	console.log(task);
+})
+
 app.listen("3000",function(){
 	console.log("Express Server running on port 3000");
 })
