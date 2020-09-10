@@ -13,6 +13,10 @@ app.get("/about",function(req,res){
 	res.send("<h1>Tejoy Vachhrajani</h1>");
 })
 
+app.get("/location",function(req,res){
+	res.send("Vadodara");
+})
+
 app.listen("3000",function(){
 	console.log("Express Server running on port 3000");
 })
