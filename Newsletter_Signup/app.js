@@ -44,12 +44,15 @@ app.post("/",function(req,res){
 		auth: "tejoy:"+process.env.API_KEY    //Tejoy written anything can be written there
 	}
 
-	https.request(url,options,function(response){
+	const request = https.request(url,options,function(response){
 		response.on("data",function(data){
 			console.log(JSON.parse(data));
 		})
 	})
 
+	// to send the json data to mailchimp earlier defined in jsonData along with the request
+	request.write(jsonData);
+	request.end();
 })
 
 
