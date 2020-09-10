@@ -7,6 +7,7 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
 var items=[];
+var workItems=[]; // list for work items
 
 app.get("/",function(req,res){
 
@@ -27,6 +28,16 @@ app.post("/",function(req,res){
 	task = req.body.taskName;
 	items.push(task);
 	res.redirect("/");
+})
+
+app.get("/work",function(req,res){
+	res.render("list",{todayIsDay:"Work List",newItem:workItems});
+})
+
+app.post("/work",function(req,res){
+	let item = req.body.taskName;
+	workItems.push(item);
+	res.redirect("/work");
 })
 
 app.listen("3000",function(){
