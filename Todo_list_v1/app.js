@@ -25,9 +25,17 @@ app.get("/",function(req,res){
 })
 
 app.post("/",function(req,res){
+	
 	task = req.body.taskName;
-	items.push(task);
-	res.redirect("/");
+	
+	if(req.body.button === "Work List"){
+		
+		workItems.push(task);
+		res.redirect("/work");
+	}else{
+		items.push(task);
+		res.redirect("/");
+	}
 })
 
 app.get("/work",function(req,res){
