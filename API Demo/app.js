@@ -9,7 +9,11 @@ app.get("/",function(req,res){
 	var url = "https://api.openweathermap.org/data/2.5/weather?q=Vadodara&appid="+ process.env.WEATHER_API_KEY +"&units=metric";
 
 	https.get(url,function(response){
-		console.log(response);
+		console.log(response.statusCode);
+
+		response.on("data",function(data){
+			console.log(data);
+		})
 	})
 })
 
