@@ -14,8 +14,17 @@ app.get("/",function(req,res){
 			const weatherData = JSON.parse(data);
 			const temp = weatherData.main.temp;
 			const desc = weatherData.weather[0].description;
+			const icon = weatherData.weather[0].icon;
 			console.log(temp);
 			console.log(desc);
+
+			const imageURL = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
+			console.log(imageURL);
+
+			res.write("<p>The weather in Vadodara is currently "+desc+"</p>");
+			res.write("<h1>The temperature in Vadodara is "+temp+"*C</h1>");
+			res.write("<img src="+imageURL+">");
+			res.send();
 		})
 	})
 })
