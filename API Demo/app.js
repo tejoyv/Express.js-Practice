@@ -13,7 +13,9 @@ app.get("/",function(req,res){
 		response.on("data",function(data){
 			const weatherData = JSON.parse(data);
 			const temp = weatherData.main.temp;
+			const desc = weatherData.weather[0].description;
 			console.log(temp);
+			console.log(desc);
 		})
 	})
 })
