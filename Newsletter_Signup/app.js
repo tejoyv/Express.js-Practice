@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const https = require("https");
 require('dotenv').config()
 
 const app = express();
@@ -30,6 +31,14 @@ app.post("/",function(req,res){
 	};
 
 	const jsonData = JSON.stringify(data); //convert to JSON to send to mailchimp server
+
+	//we need to make post data to external resource
+	// https used for getting data from external resource (one used in API demo)
+	//https.request used for post data to external resource here mailchimp server
+
+	https.request(url,options,function(response){
+		
+	})
 
 })
 
