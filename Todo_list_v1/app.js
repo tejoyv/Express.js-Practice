@@ -13,7 +13,7 @@ var workItems=[]; // list for work items
 
 app.get("/",function(req,res){
 
-	var day = date.getDay();
+	var day = date.getDate();
 
 	res.render("list",{todayIsDay:day,newItem:items});
 })
