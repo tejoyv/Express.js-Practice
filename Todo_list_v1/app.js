@@ -5,7 +5,13 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/",function(req,res){
-	res.send('Hello');
+	var today = new Date();
+
+	if(today.getDay()===6 || today.getDay()===0){
+		res.send("Today is weekend");
+	}else{
+		res.send("Today is weekday");
+	}
 })
 
 app.listen("3000",function(){
