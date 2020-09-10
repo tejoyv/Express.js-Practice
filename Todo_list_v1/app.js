@@ -6,7 +6,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
-var items=[];
+var items=["Buy Food","Cook Food","Eat Food"];
 var workItems=[]; // list for work items
 
 app.get("/",function(req,res){
