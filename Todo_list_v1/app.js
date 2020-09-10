@@ -24,6 +24,10 @@ app.get("/",function(req,res){
 	res.render("list",{todayIsDay:day,newItem:items});
 })
 
+app.get("/about",function(req,res){
+	res.render("about");
+})
+
 app.post("/",function(req,res){
 	
 	task = req.body.taskName;

@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-	<head>
-		<title>To-do app</title>
-		<link rel="stylesheet" href="css/styles.css">
-	</head>
-	<body>
+<%- include("partials/header") -%>
 		<div class="box" id="heading">
 			<h1><%= todayIsDay %></h1>
 		</div>
@@ -20,8 +15,4 @@
 				<button type="submit" name="button" value="<%= todayIsDay %>">+</button>
 			</form>
 		</div>
-	</body>
-	<footer>
-        Tejoy Vachhrajani © 2020
-    </footer>
-</html>
+<%- include("partials/footer") -%>	
