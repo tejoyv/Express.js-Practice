@@ -13,9 +13,9 @@ app.get("/",function(req,res){
 
 app.post("/",function(req,res){
 	//console.log("Post request received");
-	var fname = req.body.fname;
-	var lname = req.body.lname;
-	var email = req.body.email;
+	const fname = req.body.fname;
+	const lname = req.body.lname;
+	const email = req.body.email;
 
 	const data = {
 		members : [{
@@ -27,7 +27,9 @@ app.post("/",function(req,res){
 				LNAME:lname
 			}
 		}]
-	}
+	};
+
+	const jsonData = JSON.stringify(data); //convert to JSON to send to mailchimp server
 
 })
 
