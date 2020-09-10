@@ -9,7 +9,9 @@
 			<li>Buy Food</li>
 			<li>Cook Food</li>
 			<li>Eat Food</li>
-			<li><%= newItem %></li>
+			<% for(var i=0;i<newItem.length;i++){ %>
+				<li><%= newItem[i] %></li>
+			<% } %>
 		</ul>
 
 		<form action="/" method="POST">
