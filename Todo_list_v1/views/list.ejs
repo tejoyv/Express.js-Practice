@@ -3,6 +3,10 @@
 		<title>To-do app</title>
 	</head>
 	<body>
-		<h1>Today is <%= todayIsDay %></h1>
+	<%	if(todayIsDay==="Saturday" || todayIsDay==="Sunday"){ %>
+			<h1 style="color:blue;">Today is <%= todayIsDay %></h1>
+	<%	}else{ %>
+			<h1 style="color:red;">Today is <%= todayIsDay %></h1>
+	<%	} %>
 	</body>
 </html>
