@@ -1,28 +1,41 @@
 const express = require("express");
 const https = require("https");
+const bodyParser = require("body-parser");
 require('dotenv').config()
 
 const app = express();
+app.use(bodyParser.urlencoded({extended:true}));
+
 
 app.get("/",function(req,res){
 
-	var url = "https://api.openweathermap.org/data/2.5/weather?q=Vadodara&appid="+ process.env.WEATHER_API_KEY +"&units=metric";
+	res.sendFile(__dirname+"/index.html");
+
+})
+
+app.post("/",function(req,res){
+	//console.log("Post request recieved");
+	//const city = request.body.cityName;
+	
+	var city = req.body.cityName;
+	var unit = "metric";
+
+	var url = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&appid="+ process.env.WEATHER_API_KEY +"&units="+unit;
+
 
 	https.get(url,function(response){
+		//console.log(response.statusCode);
 
 		response.on("data",function(data){
 			const weatherData = JSON.parse(data);
 			const temp = weatherData.main.temp;
 			const desc = weatherData.weather[0].description;
 			const icon = weatherData.weather[0].icon;
-			console.log(temp);
-			console.log(desc);
 
 			const imageURL = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
-			console.log(imageURL);
 
-			res.write("<p>The weather in Vadodara is currently "+desc+"</p>");
-			res.write("<h1>The temperature in Vadodara is "+temp+"*C</h1>");
+			res.write("<p>The weather in "+ city +" is currently "+desc+"</p>");
+			res.write("<h1>The temperature in "+ city +" is "+temp+"*C</h1>");
 			res.write("<img src="+imageURL+">");
 			res.send();
 		})
