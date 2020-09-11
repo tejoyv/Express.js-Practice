@@ -38,9 +38,7 @@ app.get("/posts/:postName",function(req,res){
 	// console.log(req.params.postName);
 	posts.forEach(function(post){
 		if(_.lowerCase(req.params.postName) === _.lowerCase(post.title)){
-			console.log("Match found");
-		}else{
-			console.log("Match not found");
+			res.render("post",{post:post});
 		}
 	})
 })
