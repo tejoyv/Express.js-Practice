@@ -15,8 +15,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+var posts=[];
+
 app.get("/",function(req,res){
 	res.render("home",{homeContent:homeStartingContent});
+	console.log(posts);
 })
 
 app.get("/about",function(req,res){
@@ -36,7 +39,8 @@ app.post("/compose",function(req,res){
 		title:req.body.postTitle,
 		body:req.body.postBody
 	}
-	console.log(post);
+	posts.push(post);            //adding every entered posts to post array
+	res.redirect("/");          //redirect to home route after adding to display
 })
 
 app.listen(3000, function() {
