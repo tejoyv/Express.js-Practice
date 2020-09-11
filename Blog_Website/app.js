@@ -34,7 +34,14 @@ app.get("/compose",function(req,res){
 })
 
 app.get("/posts/:postName",function(req,res){
-	console.log(req.params.postName);
+	// console.log(req.params.postName);
+	posts.forEach(function(post){
+		if(req.params.postName === post.title){
+			console.log("Match found");
+		}else{
+			console.log("Match not found");
+		}
+	})
 })
 
 app.post("/compose",function(req,res){
