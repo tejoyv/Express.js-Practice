@@ -73,17 +73,27 @@ Fruit.updateOne({_id:"5f5fb2445aae343ff05248ba"},{name:"Peach"},function(err){
 //   }
 // })
 
+const pineapple = new Fruit({
+  name: "pineapple",
+  rating: 10,
+  review: "great fruit"
+})
+
+pineapple.save();
+
 
 const personSchema = new mongoose.Schema({
   name: String,
-  age: Number
+  age: Number,
+  favouriteFruit: fruitSchema
 });
 
 const Person = mongoose.model("Person",personSchema);
 
 const person = new Person({
   name: "Tejoy",
-  age: 22
+  age: 22,
+  favouriteFruit: pineapple
 })
 
 person.save();
