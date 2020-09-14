@@ -3,7 +3,10 @@ mongoose.connect('mongodb://localhost:27017/fruitsDB', {useNewUrlParser: true, u
 
 // Create a schema
 const fruitSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    required: [true,"Why no name ?"]
+  },
   rating: {
     type: Number,
     min: 1,
@@ -17,8 +20,7 @@ const Fruit = mongoose.model("Fruit",fruitSchema); // here Fruit is the collecti
 
 // create a document
 const fruit = new Fruit({
-  name: "Guava",
-  rating: 11,
+  rating: 7,
   review: "Good"
 });
 
