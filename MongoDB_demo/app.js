@@ -18,31 +18,39 @@ const fruit = new Fruit({
   review: "Good"
 });
 
-fruit.save();
+//fruit.save();
 
-const kiwi = new Fruit({
- name: "Kiwi",
- rating: 10,
- review: "The best fruit"
-});
+// const kiwi = new Fruit({
+//  name: "Kiwi",
+//  rating: 10,
+//  review: "The best fruit"
+// });
 
-const orange = new Fruit({
- name: "Orange",
- rating: 4,
- review: "Too sour"
-});
+// const orange = new Fruit({
+//  name: "Orange",
+//  rating: 4,
+//  review: "Too sour"
+// });
 
-const banana = new Fruit({
- name: "Banana",
- rating: 3,
- review: "Wierd texture"
-});
+// const banana = new Fruit({
+//  name: "Banana",
+//  rating: 3,
+//  review: "Wierd texture"
+// });
 
-Fruit.insertMany([kiwi,orange,banana],function(err){
+// Fruit.insertMany([kiwi,orange,banana],function(err){
+//   if(err){
+//     console.log(err);
+//   }else{
+//     console.log("Successfully saved all fruits to fruitsDB");
+//   }
+// })
+
+Fruit.find(function(err,fruits){
   if(err){
     console.log(err);
   }else{
-    console.log("Successfully saved all fruits to fruitsDB");
+    console.log(fruits);
   }
 })
 
