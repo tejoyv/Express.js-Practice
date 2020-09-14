@@ -18,13 +18,23 @@ const fruitSchema = new mongoose.Schema({
 // Create a model
 const Fruit = mongoose.model("Fruit",fruitSchema); // here Fruit is the collection name.Always we'll write in singular form mongoose automatically lowerscase and makes plural. i.e our collection name will be fruits
 
-// create a document
-const fruit = new Fruit({
-  rating: 7,
-  review: "Good"
-});
+// // create a document
+// const fruit = new Fruit({
+//   rating: 7,
+//   review: "Good"
+// });
 
-fruit.save();
+// fruit.save();
+
+
+Fruit.updateOne({_id:"5f5fb2445aae343ff05248ba"},{name:"Peach"},function(err){
+  if(err){
+    console.log(err);
+  }else{
+    console.log("Successfully updated");
+  }
+})
+
 
 // const kiwi = new Fruit({
 //  name: "Kiwi",
