@@ -87,3 +87,12 @@ const person = new Person({
 })
 
 person.save();
+
+
+Fruit.deleteOne({name:"Peach"},function(err){
+  if(err){
+    console.log(err);
+  }else{
+    console.log("Successfully deleted the entry");
+  }
+})
