@@ -4,7 +4,11 @@ mongoose.connect('mongodb://localhost:27017/fruitsDB', {useNewUrlParser: true, u
 // Create a schema
 const fruitSchema = new mongoose.Schema({
   name: String,
-  rating: Number,
+  rating: {
+    type: Number,
+    min: 1,
+    max:10
+  },
   review: String
 });
 
@@ -13,12 +17,12 @@ const Fruit = mongoose.model("Fruit",fruitSchema); // here Fruit is the collecti
 
 // create a document
 const fruit = new Fruit({
-  name: "Apple",
-  rating: 7,
+  name: "Guava",
+  rating: 11,
   review: "Good"
 });
 
-//fruit.save();
+fruit.save();
 
 // const kiwi = new Fruit({
 //  name: "Kiwi",
@@ -46,16 +50,16 @@ const fruit = new Fruit({
 //   }
 // })
 
-Fruit.find(function(err,fruits){
-  if(err){
-    console.log(err);
-  }else{
-    fruits.forEach(function(fruit){
-      console.log(fruit.name);
-    })
-    mongoose.connection.close();
-  }
-})
+// Fruit.find(function(err,fruits){
+//   if(err){
+//     console.log(err);
+//   }else{
+//     fruits.forEach(function(fruit){
+//       console.log(fruit.name);
+//     })
+//     mongoose.connection.close();
+//   }
+// })
 
 
 const personSchema = new mongoose.Schema({
