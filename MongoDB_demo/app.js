@@ -96,3 +96,11 @@ Fruit.deleteOne({name:"Peach"},function(err){
     console.log("Successfully deleted the entry");
   }
 })
+
+Person.deleteMany({name:"Tejoy"},function(err){
+  if(err){
+    console.log(err);
+  }else{
+    console.log("Successfully deleted the entries");
+  }
+})
