@@ -36,6 +36,16 @@ const item3 = new Item({
 
 const defaultItems = [item1,item2,item3];
 
+// Schema for custom lists
+const listSchema = {
+  name: String,   //Listname
+  items:[itemsSchema]
+}
+
+// Model for customlists
+const List = mongoose.model("List",listSchema);
+
+
 app.get("/", function(req, res) {
 
   Item.find({},function(err,foundItems){
@@ -56,6 +66,33 @@ app.get("/", function(req, res) {
     }
   });
 });
+
+app.get("/:customListName",function(req,res){
+  const customListName = req.params.customListName;
+  // console.log(customListName);
+
+  // if already list exist don't create new add in that
+  List.findOne({name:customListName},function(err,foundList){
+    if(!err){
+      if(!foundList){
+        // create a new list
+          //custom list document
+          const list = new List({
+            name : customListName,
+            items : defaultItems
+          });
+
+          list.save();
+          res.redirect("/"+customListName);    
+      }else{
+        // show an existing list
+        res.render("list",{listTitle: foundList.name, newListItems: foundList.items});
+      }
+    }
+  })
+
+})
+
 
 app.post("/", function(req, res){
 
